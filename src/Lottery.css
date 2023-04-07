@@ -1,0 +1,36 @@
+/* Lottery.css */
+
+.Lottery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .winner {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .PlayersTable {
+    margin-top: 16px;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  .PlayersTable td,
+  .PlayersTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .PlayersTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4caf50;
+    color: white;
+  }
+  

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import LotteryForm from './LotteryForm';
 import Lottery from './Lottery';
 import PlayAgain from './PlayAgain';
+import './App.css';
 
 type Player = {
   name: string;
