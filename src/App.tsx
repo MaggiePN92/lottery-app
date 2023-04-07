@@ -11,6 +11,11 @@ type Player = {
   tickets: number;
 };
 
+type Props = {
+  winner: string;
+  onWinnerDrawn: (winner: string) => void;
+};
+
 function App() {
   const [lotteryStarted, setLotteryStarted] = useState(false);
   const [players, setPlayers] = useState<Player[]>([]);
@@ -50,7 +55,6 @@ function App() {
       ) : (
         <Lottery players={players} onWinnerDrawn={handleWinnerDrawn} resetLottery={resetLottery} />
       )}
-      {winner && <p>The winner is: {winner}!</p>}
     </div>
   );
 }

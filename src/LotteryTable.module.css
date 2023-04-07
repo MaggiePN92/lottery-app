@@ -1,0 +1,26 @@
+/* LotteryTable.module.css */
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+  color: #4caf50; /* Change text color to dark grey */
+}
+
+.table th {
+  background-color: #f0e9f4;
+  font-weight: bold;
+}
