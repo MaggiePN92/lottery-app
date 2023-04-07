@@ -1,6 +1,8 @@
 // LotteryForm.tsx
 
 import React, { useState } from 'react';
+import './LotteryForm.css';
+
 
 type Player = {
   name: string;
@@ -37,36 +39,40 @@ function LotteryForm({ onLotteryStart }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
+  <div className="form-container">
+    <div className="form-group">
+      <label>Name of player:</label>
       {players.map((player, index) => (
-        <div key={index}>
-          <label>
-            Name:
-            <input
-              type="text"
-              value={player.name}
-              onChange={(event) =>
-                handlePlayerNameChange(index, event.target.value)
-              }
-            />
-          </label>
-          <label>
-            Number of Tickets:
-            <input
-              type="number"
-              value={player.tickets}
-              onChange={(event) =>
-                handlePlayerTicketsChange(index, parseInt(event.target.value))
-              }
-            />
-          </label>
-        </div>
+        <input
+          type="text"
+          value={player.name}
+          onChange={(event) =>
+            handlePlayerNameChange(index, event.target.value)
+          }
+        />
       ))}
-      <button type="button" onClick={addPlayer}>
-        Add Player
-      </button>
-      <button type="submit">Start Lottery</button>
-    </form>
-  );
+    </div>
+    <div className="form-group">
+      <label>Number of Tickets:</label>
+      {players.map((player, index) => (
+        <input
+          type="number"
+          value={player.tickets}
+          onChange={(event) =>
+            handlePlayerTicketsChange(index, parseInt(event.target.value))
+          }
+        />
+      ))}
+    </div>
+  </div>
+  <button type="button" onClick={addPlayer}>
+    Add Player
+  </button>
+  <button type="submit">Start Lottery</button>
+</form>
+
+
+  );  
 }
 
 export default LotteryForm;
