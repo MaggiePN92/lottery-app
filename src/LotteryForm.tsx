@@ -37,6 +37,15 @@ function LotteryForm({ onLotteryStart }: Props) {
     setPlayers([...players, { name: '', tickets: 0 }]);
   };
 
+  const removePlayer = () => {
+    const newPlayers = [...players];
+    if (newPlayers.length === 1) {
+      return;
+    }
+    newPlayers.pop();
+    setPlayers(newPlayers);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
   <div className="form-container">
@@ -70,6 +79,10 @@ function LotteryForm({ onLotteryStart }: Props) {
     Add Player
   </button>
   <button type="submit">Start Lottery</button>
+
+  <button type="button" onClick={removePlayer}>
+    Remove player
+  </button>
 </form>
 
 
