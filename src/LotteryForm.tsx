@@ -57,6 +57,7 @@ function LotteryForm({ onLotteryStart }: Props) {
       {players.map((player, index) => (
         <input
           type="number"
+          min="0"
           value={player.tickets}
           onChange={(event) =>
             handlePlayerTicketsChange(index, parseInt(event.target.value))
