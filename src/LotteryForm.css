@@ -17,3 +17,34 @@
 .form-group input {
   margin-bottom: 0.5rem;
 }
+
+.buttons-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-boxes {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px; /* Adjust this value according to your desired width */
+  margin-bottom: 20px; /* Space between input boxes and buttons */
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px; /* Adjust this value according to your desired width */
+}
+
+
+.button-form {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+}

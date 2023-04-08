@@ -47,42 +47,50 @@ function LotteryForm({ onLotteryStart }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-  <div className="form-container">
-    <div className="form-group">
-      <label>Name of player:</label>
-      {players.map((player, index) => (
-        <input
-          type="text"
-          value={player.name}
-          onChange={(event) =>
-            handlePlayerNameChange(index, event.target.value)
-          }
-        />
-      ))}
+  <form onSubmit={handleSubmit}>
+
+    <div className='buttons-input-container'>
+      <div className="form-container">
+        <div className="form-group">
+          <label>Name of player:</label>
+          {players.map((player, index) => (
+            <input
+              type="text"
+              className='input-boxes'
+              value={player.name}
+              onChange={(event) =>
+                handlePlayerNameChange(index, event.target.value)
+              }/>))}
+        </div>
+
+      <div className="form-group">
+        <label>Number of Tickets:</label>
+        {players.map((player, index) => (
+          <input
+            type="number"
+            className='input-boxes'
+            min="0"
+            value={player.tickets}
+            onChange={(event) =>
+              handlePlayerTicketsChange(index, parseInt(event.target.value))
+            }/>))}
+      </div>
     </div>
-    <div className="form-group">
-      <label>Number of Tickets:</label>
-      {players.map((player, index) => (
-        <input
-          type="number"
-          min="0"
-          value={player.tickets}
-          onChange={(event) =>
-            handlePlayerTicketsChange(index, parseInt(event.target.value))
-          }
-        />
-      ))}
+
+    <div className='buttons'>
+      <button type="button" className='button-form' onClick={addPlayer}>
+          Add Player
+      </button>
+
+      <button type="submit" className='button-form' >
+        Start Lottery
+      </button>
+
+      <button type="button" className='button-form' onClick={removePlayer}>
+        Remove player
+      </button>
     </div>
   </div>
-  <button type="button" onClick={addPlayer}>
-    Add Player
-  </button>
-  <button type="submit">Start Lottery</button>
-
-  <button type="button" onClick={removePlayer}>
-    Remove player
-  </button>
 </form>
 
 
