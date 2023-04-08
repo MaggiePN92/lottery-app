@@ -44,11 +44,16 @@ function Lottery({ players, onWinnerDrawn, resetLottery }: Props) {
 
   return (
     <div className="Lottery">
-      <h2>Lottery</h2>
+      <h1>Lottery</h1>
       {selectedWinner && <p className="winner">The winner is: {selectedWinner}!</p>}
-      <button onClick={handleDrawWinner} disabled={totalTickets === 0}>
-        Draw Winner
-      </button>
+      <div className='button-div'>
+        <button onClick={handleDrawWinner} disabled={totalTickets === 0}>
+          Draw Winner
+        </button>
+        <button>
+          End lottery
+        </button>
+      </div>
       <div className={styles.tableContainer}>
         <table className={styles.table}>
           <thead>
