@@ -17,6 +17,8 @@ type Props = {
 function Lottery({ players, onWinnerDrawn, resetLottery }: Props) {
   const totalTickets = players.reduce((sum, player) => sum + player.tickets, 0);
   const [selectedWinner, setSelectedWinner] = useState('');
+  const [winners, setWinners] = useState<Player[]>([]);
+  const [lotteryEnded, setLotteryEnded] = useState(false);
 
   const handleDrawWinner = () => {
     const tickets: string[] = [];
@@ -30,7 +32,7 @@ function Lottery({ players, onWinnerDrawn, resetLottery }: Props) {
     const winnerPlayerIndex = parseInt(tickets[winnerIndex]);
     const winnerName = players[winnerPlayerIndex].name;
     setSelectedWinner(winnerName);
-
+    setWinners([...winners, players[winnerPlayerIndex]]);
     // Reduce the winner's ticket count by 1
     const updatedPlayers = players.map((player, index) => {
       if (index === winnerPlayerIndex) {
@@ -50,7 +52,7 @@ function Lottery({ players, onWinnerDrawn, resetLottery }: Props) {
         <button onClick={handleDrawWinner} disabled={totalTickets === 0}>
           Draw Winner
         </button>
-        <button>
+        <button onClick={() => setLotteryEnded(true)}>
           End lottery
         </button>
       </div>
@@ -72,12 +74,27 @@ function Lottery({ players, onWinnerDrawn, resetLottery }: Props) {
           </tbody>
         </table>
       </div>
-      {totalTickets === 0 && (
+      {totalTickets === 0 || lotteryEnded ?(
         <div>
+          <table>
+          <thead>
+            <tr>
+              <th>Winners</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {winners.map(player => (
+              <tr>
+                <td>{player.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
           <p>No more tickets. Want to play one more?</p>
           <button onClick={resetLottery}>Play again</button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
